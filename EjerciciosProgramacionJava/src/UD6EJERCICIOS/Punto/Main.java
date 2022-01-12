@@ -3,35 +3,21 @@ package UD6EJERCICIOS.Punto;
 public class Main {
 
     public static void main(String[] args) {
-        Punto p1 = new Punto();
-        Punto p2 = new Punto();
-        Punto p3 = new Punto();
+        Punto p1 = new Punto(5,0);
+        Punto p2 = new Punto(10,10);
+        Punto p3 = new Punto(-3,7);
 
-        p1.x = 5;
-        p1.y = 0;
+        System.out.println("(" + p1.getX() + "," + p1.getY() + ")");
+        System.out.println("(" + p2.getX() + "," + p2.getY() + ")");
+        System.out.println("(" + p3.getX() + "," + p3.getY() + ")");
         
-        p2.x = 10;
-        p2.y = 10;
+        System.out.println(p1.distancia(p3));
         
-        p3.x = -3;
-        p3.y = 7;
+        p1.desplaza(5, 3);
         
-        System.out.println("(" + p1.x + "," + p1.y + ")");
-        System.out.println("(" + p2.x + "," + p2.y + ")");
-        System.out.println("(" + p3.x + "," + p3.y + ")");
+        p1.imprime();
         
-        p1.x++;
-        p1.y++;
         
-        p2.x++;
-        p2.y++;
-        
-        p3.x++;
-        p3.y++;
-        
-        System.out.println("(" + p1.x + "," + p1.y + ")");
-        System.out.println("(" + p2.x + "," + p2.y + ")");
-        System.out.println("(" + p3.x + "," + p3.y + ")");
-    }
+}
 
 }

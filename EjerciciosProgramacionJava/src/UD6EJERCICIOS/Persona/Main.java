@@ -8,30 +8,19 @@ public class Main {
         
         Scanner lector = new Scanner(System.in);
         
-        Persona p1 = new Persona();
-        Persona p2 = new Persona();
+        Persona p1 = new Persona("Karim", "Rezgaoui Mourad", "123456X", 21);
+        Persona p2 = new Persona("Kevin", "Blanco", "534533D", 17);
         
-        System.out.println("Persona 1");
-        p1.dni = lector.nextLine();
-        p1.nombre = lector.nextLine();
-        p1.apellidos = lector.nextLine();
-        p1.edad = lector.nextInt();
         
-        lector.nextLine();
         
-        System.out.println("Persona 2");
-        p2.dni = lector.nextLine();
-        p2.nombre = lector.nextLine();
-        p2.apellidos = lector.nextLine();
-        p2.edad = lector.nextInt();
+        System.out.println(p1.getNombre() + " " + p1.getApellidos() + " con DNI " + 
+                p1.getDni() + " " + p1.esMayorEdad() + " " + p1.esJubilado());
         
-        System.out.print(p1.nombre + " " + p1.apellidos + " con DNI " + 
-                p1.dni + " ");
-        p1.MayorEdad(p1.edad);
+        System.out.println(p2.getNombre() + " " + p2.getApellidos() + " con DNI " + 
+                p2.getDni() + " " + p1.esMayorEdad() + " " + p1.esJubilado());
         
-        System.out.print(p2.nombre + " " + p2.apellidos + " con DNI " + 
-                p2.dni + " ");
-        p2.MayorEdad(p2.edad);
+        p1.imprime();
+        
         
     }
     
