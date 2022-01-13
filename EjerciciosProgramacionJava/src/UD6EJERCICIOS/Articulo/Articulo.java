@@ -1,27 +1,36 @@
 package UD6EJERCICIOS.Articulo;
 
+import java.util.Scanner;
+
 public class Articulo {
 
     private String nombre;
     private double precio;
-    private int IVA = 21;
+    private static final int[] IVA = {21, 10, 4};
     private int cuantosQuedan;
+    private int tipo;
 
     public double getPVP() {
+        
+        double suma = 0;
+        switch (tipo) {
+            case 1:
+                suma = (this.precio * (double) IVA[0]) / 100;
+                break;
+            case 2:
+                suma = (this.precio * (double) IVA[1]) / 100;
+                break;
+            case 3:
+                suma = (this.precio * (double) IVA[2]) / 100;
+                break;
+        }
 
-        double suma = (this.precio * (double) IVA) / 100;
-
-        double total = this.precio + suma;
-        return total;
+        return this.precio + suma;
     }
 
     public double getPVPDescuento(double p, int d) {
 
-        double suma = (this.precio * (double) IVA) / 100;
-
-        double total = this.precio + suma;
-        total -= d;
-        return total;
+        return (getPVP() - d);
     }
 
     public boolean vender(int x) {
@@ -38,27 +47,22 @@ public class Articulo {
             return true;
         }
     }
-    public boolean almacenar(int x){
+
+    public boolean almacenar(int x) {
         this.cuantosQuedan += x;
         return true;
     }
 
-    public void imprimir(){
+    public void imprimir() {
         System.out.println(this.nombre + " - Precio: " + this.precio
-        + " - IVA: " + this.IVA + " - PVP: " + this.getPVP());
+                + " - IVA: " + this.IVA + " - PVP: " + this.getPVP());
     }
-    public Articulo(String nombre, double precio, int cuantosQuedan) {
-        if (precio >= 0) {
-            this.precio = precio;
-        } else {
-            System.err.println("ERROR, PRECIO NEGATIVO!!!!");
-        }
-        if (cuantosQuedan >= 0) {
-            this.cuantosQuedan = cuantosQuedan;
-        } else {
-            System.err.println("ERROR, STOCK NEGATIVO!!!!");
-        }
-        this.nombre = nombre;
+
+    public Articulo(String nombre, double precio, int cuantosQuedan, int tipo) {
+        setPrecio(precio);
+        setCuantos(cuantosQuedan);
+        setNombre(nombre);
+        setTipo(tipo);
     }
 
     public String getNombre() {
@@ -69,8 +73,20 @@ public class Articulo {
         return precio;
     }
 
+    public int getTipo() {
+        return tipo;
+    }
+
     public int getIVA() {
-        return IVA;
+        switch (tipo) {
+            case 1:
+                return IVA[0];
+            case 2:
+                return IVA[1];
+            case 3:
+                return IVA[2];
+        }
+        return 0;
     }
 
     public int getCuantos() {
@@ -98,4 +114,13 @@ public class Articulo {
         }
 
     }
+    public void setTipo(int tipo) {
+        if (tipo > 0 && tipo < 4) {
+            this.tipo = tipo;
+        } else {
+            System.err.println("ERROR, NO ES UN TIPO VALIDO!!!!");
+        }
+
+    }
+    
 }

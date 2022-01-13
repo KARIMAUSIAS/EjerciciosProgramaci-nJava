@@ -41,8 +41,13 @@ public class Punto {
         this.y += dy;
     }
     public int distancia(Punto p){
-        int d = (int) Math.sqrt(Math.pow((p.x - this.x),2) + Math.pow((p.y - this.y),2));
-        
-        return d;
+        return (int) Math.sqrt(Math.pow((p.x - this.x),2) + Math.pow((p.y - this.y),2));
     }
+    
+   public static Punto creaPuntoAleatorio(){
+       int a = (int) (Math.random()*(100 - (-100) + (-100)));
+       int b = (int) (Math.random()*(100 - (-100) + (-100)));
+       Punto p = new Punto(a, b);
+       return p;
+   }
 }

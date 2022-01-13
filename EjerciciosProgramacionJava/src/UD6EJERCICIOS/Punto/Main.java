@@ -18,6 +18,12 @@ public class Main {
         p1.imprime();
         
         
+        Punto p = Punto.creaPuntoAleatorio();
+        
+        p.imprime();
+        
+        
+        
 }
 
 }
